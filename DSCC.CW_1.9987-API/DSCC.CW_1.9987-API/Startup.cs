@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using DSCC.CW_1._9987_API.DBContexts;
+using DSCC.CW_1._9987_API.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace DSCC.CW_1._9987_API
@@ -22,6 +23,7 @@ namespace DSCC.CW_1._9987_API
         {
             services.AddControllers();
             services.AddDbContext<EmployeeContext>(o => o.UseSqlServer(Configuration.GetConnectionString("EmployeeDB")));
+            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
