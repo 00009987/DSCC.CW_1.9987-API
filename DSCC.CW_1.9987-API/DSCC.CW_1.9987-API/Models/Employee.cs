@@ -13,7 +13,6 @@ namespace DSCC.CW_1._9987_API.Model
         public string LastName { get; set; }
         public string Position { get; set; }
         public int? ReportsTo { get; set; }
-        public Employee Supervisor { get; set; }
         public DateTime? BirthDate { get; set; } 
         public string Address { get; set; } 
         public string Phone { get; set; }
