@@ -18,6 +18,8 @@ namespace DSCC.CW_1._9987_API.Repository
 
         public void AddBlog(Blog blog)
         {
+            // setting today as the blog post written date
+            blog.WrittenDate = DateTime.UtcNow.Date;
             _dbContext.Blogs.Add(blog);
             Save();
         }
@@ -41,6 +43,8 @@ namespace DSCC.CW_1._9987_API.Repository
 
         public void UpdateBlog(Blog blog)
         {
+            // setting today as the blog post modified date
+            blog.WrittenDate = DateTime.UtcNow.Date;
             _dbContext.Entry(blog).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             Save();
         }
