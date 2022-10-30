@@ -22,8 +22,8 @@ namespace DSCC.CW_1._9987_API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddDbContext<EmployeeContext>(o => o.UseSqlServer(Configuration.GetConnectionString("EmployeeDB")));
-            services.AddTransient<IEmployeeRepository, EmployeeRepository>();
+            services.AddDbContext<BlogContext>(o => o.UseSqlServer(Configuration.GetConnectionString("BlogDB")));
+            services.AddTransient<IBlogRepository, BlogRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
