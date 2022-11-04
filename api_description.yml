@@ -1,0 +1,152 @@
+openapi: 3.0.0
+servers:
+  - description: SwaggerHub API
+    url: 'DEPLOYED_API_URL'
+info:
+  description: This is a basic CRUD API for DSCC coursework
+  version: "1.0.0"
+  title: Blog CRUD API
+  contact:
+    email: 00009987@wiut.uz
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /api/Blog:
+    get:
+      tags:
+        - Get all the blog posts
+      operationId: getAllTheBlogPosts
+      description: |
+        By calling this endpoint, you can get all the available blog posts
+      responses:
+        '200':
+          description: All the available blog posts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BlogPost'
+        '400':
+          description: Bad request
+        '404':
+          description: Endpoint not found
+        '500':
+          description: Server might be offline
+    post:
+      tags:
+        - Create a new blog post
+      operationId: createNewBlogPost
+      description: Adds a post to the database
+      responses:
+        '201':
+          description: Blog post has been created
+        '400':
+          description: Invalid input, object invalid
+        '409':
+          description: An existing item already exists
+        '500':
+          description: Server might be offline
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogPost'
+        description: Blog post to add
+  /api/Blog/{blogId}:
+    get:
+      tags:
+          - Get a blog post by id
+      parameters:
+        - in: path
+          name: blogId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the blog post to get
+      operationId: getTheBlogPostById
+      description: By calling this endpoint, you can get the blog post using an ID
+      responses:
+          '200':
+            description: The requested blog post
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/BlogPost'
+          '400':
+            description: Bad input parameter
+          '500':
+            description: Server might be offline
+    put:
+      tags:
+        - Edit a blog post
+      parameters:
+        - in: path
+          name: blogId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the blog post to get
+      operationId: editBlogPost
+      description: Edits an existing blog post
+      responses:
+        '200':
+          description: Blog post has been updated
+        '400':
+          description: Invalid input, object invalid
+        '404':
+          description: Blog post is not found
+        '500':
+          description: Server might be offline
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BlogPost'
+        description: Blog post to edit
+    delete:
+      tags:
+        - Delete a blog post
+      parameters:
+        - in: path
+          name: blogId
+          schema:
+            type: integer
+          required: true
+          description: Numeric ID of the blog post to get
+      operationId: deleteBlogPost
+      description: Deletes an existing blog post
+      responses:
+        '200':
+          description: Blog post has been deleted
+        '400':
+          description: Parameter is missing
+        '404':
+          description: Blog post is not found
+        '500':
+          description: Server might be offline
+components:
+  schemas:
+    BlogPost:
+      type: object
+      required:
+        - title
+        - description
+        - author
+        - post
+      properties:       
+        title:
+          type: string
+          example: My Life...
+        description: 
+          type: string
+          example: This is a story I want to share
+        author:
+          type: string
+          example: James Johnson
+        post:
+          type: string
+          example: There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don’t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn’t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
