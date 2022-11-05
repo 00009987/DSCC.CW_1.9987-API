@@ -1,8 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>DSCC.CW_1._9987_API</RootNamespace>
+    <UserSecretsId>f202f183-f3f2-4e70-84bd-c9ef2a65f888</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
