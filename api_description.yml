@@ -1,7 +1,10 @@
 openapi: 3.0.0
 servers:
-  - description: SwaggerHub API
-    url: 'DEPLOYED_API_URL'
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/jamoliddinsaidov/DSCC.CW_1.9987-API/1.0.0
+  - description: CW Blog API
+    url: http://ec2-54-88-217-253.compute-1.amazonaws.com
 info:
   description: This is a basic CRUD API for DSCC coursework
   version: "1.0.0"
